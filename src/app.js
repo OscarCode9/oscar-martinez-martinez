@@ -1,12 +1,9 @@
-import createError from "http-errors";
 import express from "express";
-import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
-import { fileURLToPath } from "url";
 import mongoose from "mongoose";
-import indexRouter from "./routes/auth.js";
-import usersRouter from "./routes/products.js";
+import authRouter from "./routes/auth.js";
+import productsRouter from "./routes/products.js";
 import dotenv from "dotenv";
 import cors from "cors";
 import { errorHandler } from "./middleware/errorHandler.js";
@@ -24,17 +21,14 @@ mongoose
   .catch((err) => console.error("Error connecting to MongoDB:", err));
 
 // view engine setup
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/auth", indexRouter);
-app.use("/api/v1", usersRouter);
+app.use("/auth", authRouter);
+app.use("/api/v1", productsRouter);
 
 // error handler
 app.use(errorHandler);

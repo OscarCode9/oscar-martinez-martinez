@@ -85,6 +85,14 @@ This file defines two services:
 
 Both services are connected to the `app-network`, allowing communication between them.
 
+## Running Tests
+
+To run the project tests, you can use the following command:
+
+```bash
+npm run test
+```
+
 ## API Endpoints
 
 ### Authentication
