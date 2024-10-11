@@ -1,4 +1,5 @@
 import { Product } from "../models/Products.js";
+import mongoose from "mongoose";
 
 export const getAllProductsService = async () => {
   try {
@@ -8,17 +9,18 @@ export const getAllProductsService = async () => {
   }
 };
 
-export const getProductsByUserIdService = async (userId) => {
+export const getProductsByUserIdService = async ({ userId }) => {
   try {
-    return await Product.find({ userId });
+    const objectId = new mongoose.Types.ObjectId(userId);
+    return await Product.find({ userId: objectId });
   } catch (error) {
     throw error;
   }
 };
 
-export const getProductByIdService = async (id) => {
+export const getProductByIdService = async ({ productId }) => {
   try {
-    const product = await Product.findById(id);
+    const product = await Product.findById(productId);
     if (!product) {
       throw new Error("Product not found");
     }
@@ -55,8 +57,8 @@ export const createProductService = async ({
 export const updateProductService = async (id, updateData) => {
   try {
     const product = await Product.findByIdAndUpdate(id, updateData, {
-        new: true, // Return the updated document
-        runValidators: true, // Run schema validators on update
+      new: true, // Return the updated document
+      runValidators: true, // Run schema validators on update
     });
     if (!product) {
       throw new Error("Product not found");
@@ -96,7 +98,9 @@ export const batchUpdateProductsService = async (updates) => {
       },
     }));
     await Product.bulkWrite(bulkOps);
-    const updatedProducts = await Product.find({ _id: { $in: updates.map((update) => update._id) } });
+    const updatedProducts = await Product.find({
+      _id: { $in: updates.map((update) => update._id) },
+    });
     return { updatedProducts };
   } catch (error) {
     throw error;

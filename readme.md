@@ -11,8 +11,8 @@ This project is a RESTful API for managing products in an e-commerce store.
 
 1. Clone this repository:
    ```
-   git clone https://github.com/your-username/alejandro-de-la-cruz-martinez.git
-   cd alejandro-de-la-cruz-martinez
+   git clone https://github.com/OscarCode9/oscar-martinez-martinez.git
+   cd oscar-martinez-martinez
    ```
 
 2. Build and start the services using Docker Compose:
@@ -98,7 +98,7 @@ Both services are connected to the `app-network`, allowing communication between
 All product endpoints require authentication (token in the `Authorization: Bearer <token>` header)
 
 - GET /api/v1/products - Get all products
-- GET /api/v1/products/:userId - Get products by user ID
+- GET /api/v1/products/user/:userId - Get products by user ID
 - GET /api/v1/products/:productId - Get a product by ID
 - POST /api/v1/products - Create a new product
 - PUT /api/v1/products/:productId - Update a product
@@ -106,9 +106,9 @@ All product endpoints require authentication (token in the `Authorization: Beare
 
 ### Batch Operations
 
-- POST /api/v1/products/user/batch - Create multiple products
-- PUT /api/v1/products/user/batch - Update multiple products
-- DELETE /api/v1/products/user/batch - Delete multiple products
+- POST /api/v1/products/user/batch/:userId - Create multiple products
+- PUT /api/v1/products/user/batch/:userId - Update multiple products
+- DELETE /api/v1/products/user/batch/:userId - Delete multiple products
 
 ## Additional Notes
 

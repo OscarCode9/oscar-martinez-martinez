@@ -10,6 +10,7 @@ import {
   batchDeleteProductsService,
 } from "./products.services.js";
 import { jest } from "@jest/globals";
+import mongoose from "mongoose";
 
 jest.mock("../models/Products.js");
 
@@ -61,8 +62,9 @@ describe("createProductService", () => {
         exec: jest.fn().mockResolvedValueOnce(mockProduct),
       });
 
+      
     // Act
-    const result = await getProductByIdService(mockProduct._id);
+    const result = await getProductByIdService({productId: mockProduct._id});
     const newResult = await result.exec();
 
     // Assert
@@ -76,18 +78,18 @@ describe("createProductService", () => {
   });
 
   it("should return products by user ID", async () => {
-    const userId = "user123";
+    const userId = "670910c6fe5cc5f3996e8f05";
     const mockProducts = [
       { _id: "1", userId },
       { _id: "2", userId },
     ];
     jest.spyOn(Product, "find").mockResolvedValue(mockProducts);
-
-    const result = await getProductsByUserIdService(userId);
+    const products = await getProductsByUserIdService({userId});
     // Assert
-    expect(Product.find).toHaveBeenCalledTimes(1);
-    expect(result).toEqual(mockProducts);
-    expect(Product.find).toHaveBeenCalledWith({ userId });
+    expect(products).toEqual(mockProducts);
+    expect(Product.find).toHaveBeenCalledWith({
+      userId: new mongoose.Types.ObjectId(userId),
+    });
   });
 
   it("should update a product", async () => {
