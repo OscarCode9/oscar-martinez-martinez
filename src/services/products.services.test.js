@@ -16,7 +16,7 @@ jest.mock("../models/Products.js");
 
 describe("createProductService", () => {
   afterEach(() => {
-    jest.clearAllMocks(); // Use clearAllMocks to reset mock state
+    jest.clearAllMocks();
   });
   it("should create and return a new product", async () => {
     // Arrange
