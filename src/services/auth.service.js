@@ -2,6 +2,21 @@ import { AccessToken } from "../models/AccessToken.js";
 import { User } from "../models/User.js";
 import jwt from "jsonwebtoken";
 
+/**
+ * Creates a new user.
+ *
+ * @async
+ * @function createUser
+ * @param {Object} userData - The user's data.
+ * @param {string} userData.name - The user's name.
+ * @param {string} userData.phone - The user's phone number.
+ * @param {string} userData.email - The user's email address.
+ * @param {string} userData.password - The user's password.
+ * @param {string} [userData.img_profile] - The user's profile image URL (optional).
+ * @returns {Promise<Object>} The newly created user object.
+ * @throws {Error} If required fields are missing or the email format is invalid.
+ */
+
 export const createUser = async ({
   name,
   phone,
@@ -33,6 +48,18 @@ export const createUser = async ({
   }
 };
 
+/**
+ * Logs in a user and generates a JWT access token.
+ *
+ * @async
+ * @function loginUser
+ * @param {Object} credentials - The user's credentials.
+ * @param {string} credentials.email - The user's email address.
+ * @param {string} credentials.password - The user's password.
+ * @returns {Promise<Object>} An object containing the JWT if the login is successful.
+ * @throws {Error} If the email or password are not provided, if the user is not found, or if the password is incorrect.
+ */
+
 export const loginUser = async ({ email, password }) => {
   try {
     if (!email || !password) {
@@ -59,6 +86,17 @@ export const loginUser = async ({ email, password }) => {
     throw error;
   }
 };
+
+/**
+ * Logs out a user by deleting their access token from the database.
+ *
+ * @async
+ * @function logoutUser
+ * @param {Object} params - The parameters for the function.
+ * @param {string} params.token - The access token to be logged out.
+ * @throws {Error} If the token is invalid or if there is an error during the deletion process.
+ * @returns {Promise<Object>} The deleted access token object if successful.
+ */
 
 export const logoutUser = async ({ token }) => {
   try {
