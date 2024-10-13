@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscar Martinez Martinez - E-commerce Backend</title>
+    <style>
+        :root {
+            --primary-color: #8bc8f0;
+            --secondary-color: #2c3e50;
+            --bg-color: #f4f4f4;
+            --text-color: #333;
+            --code-bg: #e8e8e8;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1em;
+            margin-bottom: 2em;
+        }
+        h1, h2 {
+            color: var(--secondary-color);
+        }
+        h1 {
+            margin-bottom: 0.5em;
+        }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        code {
+            background-color: var(--code-bg);
+            border-radius: 3px;
+            padding: 2px 5px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        pre {
+            background-color: var(--code-bg);
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        .endpoint {
+            background-color: #e8f4fd;
+            border-left: 4px solid var(--primary-color);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Oscar Martinez Martinez - E-commerce Backend</h1>
+    </header>
+    <div class="container">
+        <p>This project is a RESTful API for managing products in an e-commerce store.</p>
+
+        <p>The RESTful API is available at the following address:</p>
+
+        <p><a href="http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/">http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/</a></p>
+
+        <h2>Prerequisites</h2>
+
+        <ul>
+            <li>Docker</li>
+            <li>Docker Compose</li>
+        </ul>
+
+        <h2>Installation and Execution</h2>
+
+        <ol>
+            <li>
+                <p>Clone this repository:</p>
+                <pre><code>git clone https://github.com/OscarCode9/oscar-martinez-martinez.git
+cd oscar-martinez-martinez</code></pre>
+            </li>
+            <li>
+                <p>Build and start the services using Docker Compose:</p>
+                <pre><code>docker-compose up --build</code></pre>
+                <p>This command will start both the API and the MongoDB database.</p>
+            </li>
+            <li>
+                <p>To stop the services, use:</p>
+                <pre><code>docker-compose down</code></pre>
+                <p>If you want to remove the MongoDB data volume as well, use:</p>
+                <pre><code>docker-compose down -v</code></pre>
+            </li>
+        </ol>
+
+        <h2>Docker Compose Configuration</h2>
+
+        <p>The <code>docker-compose.yml</code> file is configured as follows:</p>
+
+        <pre><code>version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/ecommerce
+      - JWT_SECRET=your_jwt_secret
+      - PORT=3000
+    networks:
+      - app-network
+
+  mongodb:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:</code></pre>
+
+        <p>This file defines two services:</p>
+
+        <ol>
+            <li>
+                <p><code>api</code>: Our Node.js application</p>
+                <ul>
+                    <li>Built using the Dockerfile in the current directory.</li>
+                    <li>Exposes port 3000.</li>
+                    <li>Depends on the <code>mongodb</code> service.</li>
+                    <li>Has environment variables configured for MongoDB connection and JWT secret.</li>
+                </ul>
+            </li>
+            <li>
+                <p><code>mongodb</code>: MongoDB database</p>
+                <ul>
+                    <li>Uses the official MongoDB 4.4 image.</li>
+                    <li>Exposes port 27017.</li>
+                    <li>Uses a volume to persist data.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <p>Both services are connected to the <code>app-network</code>, allowing communication between them.</p>
+
+        <h2>Running Tests</h2>
+
+        <p>To run the project tests, you can use the following command:</p>
+
+        <pre><code>npm run test</code></pre>
+
+        <h2>API Endpoints</h2>
+
+        <h3>Authentication</h3>
+
+        <div class="endpoint">
+            <p>POST /auth/register - Register a new user</p>
+            <p>POST /auth/login - Log in</p>
+            <p>POST /auth/logout - Log out (requires token)</p>
+        </div>
+
+        <h3>Products</h3>
+
+        <p>All product endpoints require authentication (token in the <code>Authorization: Bearer &lt;token&gt;</code> header)</p>
+
+        <div class="endpoint">
+            <p>GET /api/v1/products - Get all products</p>
+            <p>GET /api/v1/products/user/:userId - Get products by user ID</p>
+            <p>GET /api/v1/products/:productId - Get a product by ID</p>
+            <p>POST /api/v1/products - Create a new product</p>
+            <p>PUT /api/v1/products/:productId - Update a product</p>
+            <p>DELETE /api/v1/products/:productId - Delete a product by ID</p>
+        </div>
+
+        <h3>Batch Operations</h3>
+
+        <div class="endpoint">
+            <p>POST /api/v1/products/user/batch/:userId - Create multiple products</p>
+            <p>PUT /api/v1/products/user/batch/:userId - Update multiple products</p>
+            <p>DELETE /api/v1/products/user/batch/:userId - Delete multiple products</p>
+        </div>
+
+        <div class="note">
+            <h2>Additional Notes</h2>
+            <ul>
+                <li>Access tokens expire after 1 hour.</li>
+                <li>Joi is used for request data validation.</li>
+                <li>Error handling is centralized to provide consistent responses.</li>
+                <li>When using Docker Compose, the API will be available at <code>http://localhost:3000</code> and MongoDB at <code>localhost:27017</code>.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
