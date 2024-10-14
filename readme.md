@@ -2,7 +2,7 @@
 
 This project is a RESTful API for managing products in an e-commerce store.
 
-The  RESTful API is available at the following address:
+The RESTful API is available at the following address:
 
 http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/
 
@@ -101,26 +101,125 @@ npm run test
 
 ### Authentication
 
-- POST /auth/register - Register a new user
-- POST /auth/login - Log in
-- POST /auth/logout - Log out (requires token)
+#### Register a new user
+- **POST** `/auth/register`
+  ```json
+  {
+    "name": "John Doe",
+    "phone": "1234567890",
+    "email": "john@example.com",
+    "password": "securepassword123",
+    "img_profile": "https://example.com/profile.jpg"
+  }
+  ```
+
+#### Log in
+- **POST** `/auth/login`
+  ```json
+  {
+    "email": "john@example.com",
+    "password": "securepassword123"
+  }
+  ```
+
+#### Log out (requires token)
+- **POST** `/auth/logout`
+  - No request body required. Send the token in the Authorization header:
+    ```
+    Authorization: Bearer <your_access_token>
+    ```
 
 ### Products
 
 All product endpoints require authentication (token in the `Authorization: Bearer <token>` header)
 
-- GET /api/v1/products - Get all products
-- GET /api/v1/products/user/:userId - Get products by user ID
-- GET /api/v1/products/:productId - Get a product by ID
-- POST /api/v1/products - Create a new product
-- PUT /api/v1/products/:productId - Update a product
-- DELETE /api/v1/products/:productId - Delete a product by ID
+#### Get all products
+- **GET** `/api/v1/products`
+
+#### Get products by user ID
+- **GET** `/api/v1/products/user/:userId`
+
+#### Get a product by ID
+- **GET** `/api/v1/products/:productId`
+
+#### Create a new product
+- **POST** `/api/v1/products`
+  ```json
+  {
+    "name": "Product Name",
+    "description": "Product Description",
+    "height": 10,
+    "length": 20,
+    "width": 15
+  }
+  ```
+
+#### Update a product
+- **PUT** `/api/v1/products/:productId`
+  ```json
+  {
+    "name": "Updated Product Name",
+    "description": "Updated Product Description",
+    "height": 12,
+    "length": 22,
+    "width": 18
+  }
+  ```
+
+#### Delete a product by ID
+- **DELETE** `/api/v1/products/:productId`
 
 ### Batch Operations
 
-- POST /api/v1/products/user/batch/:userId - Create multiple products
-- PUT /api/v1/products/user/batch/:userId - Update multiple products
-- DELETE /api/v1/products/user/batch/:userId - Delete multiple products
+#### Create multiple products
+- **POST** `/api/v1/products/user/batch/:userId`
+  ```json
+  [
+    {
+      "name": "Product 1",
+      "description": "Description 1",
+      "height": 10,
+      "length": 20,
+      "width": 15
+    },
+    {
+      "name": "Product 2",
+      "description": "Description 2",
+      "height": 12,
+      "length": 22,
+      "width": 18
+    }
+  ]
+  ```
+
+#### Update multiple products
+- **PUT** `/api/v1/products/user/batch/:userId`
+  ```json
+  [
+    {
+      "id": "product_id_1",
+      "name": "Updated Product 1",
+      "description": "Updated Description 1",
+      "height": 11,
+      "length": 21,
+      "width": 16
+    },
+    {
+      "id": "product_id_2",
+      "name": "Updated Product 2",
+      "description": "Updated Description 2",
+      "height": 13,
+      "length": 23,
+      "width": 19
+    }
+  ]
+  ```
+
+#### Delete multiple products
+- **DELETE** `/api/v1/products/user/batch/:userId`
+  ```json
+  ["product_id_1", "product_id_2", "product_id_3"]
+  ```
 
 ## Additional Notes
 
@@ -128,3 +227,4 @@ All product endpoints require authentication (token in the `Authorization: Beare
 - Joi is used for request data validation.
 - Error handling is centralized to provide consistent responses.
 - When using Docker Compose, the API will be available at `http://localhost:3000` and MongoDB at `localhost:27017`.
+

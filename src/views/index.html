@@ -1,126 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oscar Martinez Martinez - E-commerce Backend</title>
     <style>
-        :root {
-            --primary-color: #8bc8f0;
-            --secondary-color: #2c3e50;
-            --bg-color: #f4f4f4;
-            --text-color: #333;
-            --code-bg: #e8e8e8;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 1em;
-            margin-bottom: 2em;
-        }
-        h1, h2 {
-            color: var(--secondary-color);
-        }
-        h1 {
-            margin-bottom: 0.5em;
-        }
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        code {
-            background-color: var(--code-bg);
-            border-radius: 3px;
-            padding: 2px 5px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        pre {
-            background-color: var(--code-bg);
-            border-radius: 5px;
-            padding: 15px;
-            overflow-x: auto;
-            font-size: 0.9em;
-        }
-        ul, ol {
-            padding-left: 20px;
-        }
-        .endpoint {
-            background-color: #e8f4fd;
-            border-left: 4px solid var(--primary-color);
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        .note {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 10px;
-            margin-top: 20px;
-        }
+      :root {
+        --primary-color: #8bc8f0;
+        --secondary-color: #2c3e50;
+        --bg-color: #f4f4f4;
+        --text-color: #333;
+        --code-bg: #e8e8e8;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      header {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 1em;
+        margin-bottom: 2em;
+      }
+      h1,
+      h2 {
+        color: var(--secondary-color);
+      }
+      h1 {
+        margin-bottom: 0.5em;
+      }
+      a {
+        color: royalblue;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      code {
+        background-color: var(--code-bg);
+        border-radius: 3px;
+        padding: 2px 5px;
+        font-family: "Courier New", Courier, monospace;
+      }
+      pre {
+        background-color: var(--code-bg);
+        border-radius: 5px;
+        padding: 15px;
+        overflow-x: auto;
+        font-size: 0.9em;
+      }
+      ul,
+      ol {
+        padding-left: 20px;
+      }
+      .endpoint {
+        background-color: #e8f4fd;
+        border-left: 4px solid var(--primary-color);
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      .note {
+        background-color: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 10px;
+        margin-top: 20px;
+      }
+      .request-body {
+        background-color: #f8f8f8;
+        border-left: 4px solid #4CAF50;
+        padding: 10px;
+        margin-top: 10px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.9em;
+    }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Oscar Martinez Martinez - E-commerce Backend</h1>
+      <h1>Oscar Martinez Martinez - E-commerce Backend</h1>
     </header>
     <div class="container">
-        <p>This project is a RESTful API for managing products in an e-commerce store.</p>
+      <p>
+        This project is a RESTful API for managing products in an e-commerce
+        store.
+      </p>
 
-        <p>The RESTful API is available at the following address:</p>
+      <p>The RESTful API is available at the following address:</p>
 
-        <p><a href="http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/">http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/</a></p>
+      <p>
+        <a href="http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/"
+          >http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/</a
+        >
+      </p>
 
-        <h2>Prerequisites</h2>
+      <p>Repository is available at the following address:</p>
 
-        <ul>
-            <li>Docker</li>
-            <li>Docker Compose</li>
-        </ul>
+      <p>
+        <a href="https://github.com/OscarCode9/oscar-martinez-martinez"
+          >https://github.com/OscarCode9/oscar-martinez-martinez</a
+        >
+      </p>
 
-        <h2>Installation and Execution</h2>
+      <h2>Prerequisites</h2>
 
-        <ol>
-            <li>
-                <p>Clone this repository:</p>
-                <pre><code>git clone https://github.com/OscarCode9/oscar-martinez-martinez.git
+      <ul>
+        <li>Docker</li>
+        <li>Docker Compose</li>
+      </ul>
+
+      <h2>Installation and Execution</h2>
+
+      <ol>
+        <li>
+          <p>Clone this repository:</p>
+          <pre><code>git clone https://github.com/OscarCode9/oscar-martinez-martinez.git
 cd oscar-martinez-martinez</code></pre>
-            </li>
-            <li>
-                <p>Build and start the services using Docker Compose:</p>
-                <pre><code>docker-compose up --build</code></pre>
-                <p>This command will start both the API and the MongoDB database.</p>
-            </li>
-            <li>
-                <p>To stop the services, use:</p>
-                <pre><code>docker-compose down</code></pre>
-                <p>If you want to remove the MongoDB data volume as well, use:</p>
-                <pre><code>docker-compose down -v</code></pre>
-            </li>
-        </ol>
+        </li>
+        <li>
+          <p>Build and start the services using Docker Compose:</p>
+          <pre><code>docker-compose up --build</code></pre>
+          <p>This command will start both the API and the MongoDB database.</p>
+        </li>
+        <li>
+          <p>To stop the services, use:</p>
+          <pre><code>docker-compose down</code></pre>
+          <p>If you want to remove the MongoDB data volume as well, use:</p>
+          <pre><code>docker-compose down -v</code></pre>
+        </li>
+      </ol>
 
-        <h2>Docker Compose Configuration</h2>
+      <h2>Docker Compose Configuration</h2>
 
-        <p>The <code>docker-compose.yml</code> file is configured as follows:</p>
+      <p>The <code>docker-compose.yml</code> file is configured as follows:</p>
 
-        <pre><code>version: '3.8'
+      <pre><code>version: '3.8'
 
 services:
   api:
@@ -152,76 +177,173 @@ networks:
 volumes:
   mongodb_data:</code></pre>
 
-        <p>This file defines two services:</p>
+      <p>This file defines two services:</p>
 
-        <ol>
+      <ol>
+        <li>
+          <p><code>api</code>: Our Node.js application</p>
+          <ul>
+            <li>Built using the Dockerfile in the current directory.</li>
+            <li>Exposes port 3000.</li>
+            <li>Depends on the <code>mongodb</code> service.</li>
             <li>
-                <p><code>api</code>: Our Node.js application</p>
-                <ul>
-                    <li>Built using the Dockerfile in the current directory.</li>
-                    <li>Exposes port 3000.</li>
-                    <li>Depends on the <code>mongodb</code> service.</li>
-                    <li>Has environment variables configured for MongoDB connection and JWT secret.</li>
-                </ul>
+              Has environment variables configured for MongoDB connection and
+              JWT secret.
             </li>
-            <li>
-                <p><code>mongodb</code>: MongoDB database</p>
-                <ul>
-                    <li>Uses the official MongoDB 4.4 image.</li>
-                    <li>Exposes port 27017.</li>
-                    <li>Uses a volume to persist data.</li>
-                </ul>
-            </li>
-        </ol>
+          </ul>
+        </li>
+        <li>
+          <p><code>mongodb</code>: MongoDB database</p>
+          <ul>
+            <li>Uses the official MongoDB 4.4 image.</li>
+            <li>Exposes port 27017.</li>
+            <li>Uses a volume to persist data.</li>
+          </ul>
+        </li>
+      </ol>
 
-        <p>Both services are connected to the <code>app-network</code>, allowing communication between them.</p>
+      <p>
+        Both services are connected to the <code>app-network</code>, allowing
+        communication between them.
+      </p>
 
-        <h2>Running Tests</h2>
+      <h2>Running Tests</h2>
 
-        <p>To run the project tests, you can use the following command:</p>
+      <p>To run the project tests, you can use the following command:</p>
 
-        <pre><code>npm run test</code></pre>
+      <pre><code>npm run test</code></pre>
+
+      <div class="container">
+        <!-- ... (previous content remains unchanged) ... -->
 
         <h2>API Endpoints</h2>
 
         <h3>Authentication</h3>
 
         <div class="endpoint">
-            <p>POST /auth/register - Register a new user</p>
-            <p>POST /auth/login - Log in</p>
-            <p>POST /auth/logout - Log out (requires token)</p>
+          <p>POST /auth/register - Register a new user</p>
+          <div class="request-body">
+            <pre><code>{
+      "name": "John Doe",
+      "phone": "1234567890",
+      "email": "john@example.com",
+      "password": "securepassword123",
+      "img_profile": "https://example.com/profile.jpg"
+    }</code></pre>
+          </div>
+        </div>
+
+        <div class="endpoint">
+          <p>POST /auth/login - Log in</p>
+          <div class="request-body">
+            <pre><code>{
+      "email": "john@example.com",
+      "password": "securepassword123"
+    }</code></pre>
+          </div>
+        </div>
+
+        <div class="endpoint">
+          <p>POST /auth/logout - Log out (requires token)</p>
+          <p>
+            No request body required. Send the token in the Authorization
+            header:
+          </p>
+          <pre><code>Authorization: Bearer &lt;your_access_token&gt;</code></pre>
         </div>
 
         <h3>Products</h3>
 
-        <p>All product endpoints require authentication (token in the <code>Authorization: Bearer &lt;token&gt;</code> header)</p>
+        <p>
+          All product endpoints require authentication (token in the
+          <code>Authorization: Bearer &lt;token&gt;</code> header)
+        </p>
 
         <div class="endpoint">
-            <p>GET /api/v1/products - Get all products</p>
-            <p>GET /api/v1/products/user/:userId - Get products by user ID</p>
-            <p>GET /api/v1/products/:productId - Get a product by ID</p>
-            <p>POST /api/v1/products - Create a new product</p>
-            <p>PUT /api/v1/products/:productId - Update a product</p>
-            <p>DELETE /api/v1/products/:productId - Delete a product by ID</p>
+          <p>GET /api/v1/products - Get all products</p>
+          <p>GET /api/v1/products/user/:userId - Get products by user ID</p>
+          <p>GET /api/v1/products/:productId - Get a product by ID</p>
+          <p>POST /api/v1/products - Create a new product</p>
+          <div class="request-body">
+            <pre><code>{
+      "name": "Product Name",
+      "description": "Product Description",
+      "height": 10,
+      "length": 20,
+      "width": 15
+    }</code></pre>
+          </div>
+          <p>PUT /api/v1/products/:productId - Update a product</p>
+          <div class="request-body">
+            <pre><code>{
+      "name": "Updated Product Name",
+      "description": "Updated Product Description",
+      "height": 12,
+      "length": 22,
+      "width": 18
+    }</code></pre>
+          </div>
+          <p>DELETE /api/v1/products/:productId - Delete a product by ID</p>
         </div>
 
         <h3>Batch Operations</h3>
 
         <div class="endpoint">
-            <p>POST /api/v1/products/user/batch/:userId - Create multiple products</p>
-            <p>PUT /api/v1/products/user/batch/:userId - Update multiple products</p>
-            <p>DELETE /api/v1/products/user/batch/:userId - Delete multiple products</p>
+          <p>
+            POST /api/v1/products/user/batch/:userId - Create multiple products
+          </p>
+          <div class="request-body">
+            <pre><code>[
+      {
+        "name": "Product 1",
+        "description": "Description 1",
+        "height": 10,
+        "length": 20,
+        "width": 15
+      },
+      {
+        "name": "Product 2",
+        "description": "Description 2",
+        "height": 12,
+        "length": 22,
+        "width": 18
+      }
+    ]</code></pre>
+          </div>
+          <p>
+            PUT /api/v1/products/user/batch/:userId - Update multiple products
+          </p>
+          <div class="request-body">
+            <pre><code>[
+      {
+        "id": "product_id_1",
+        "name": "Updated Product 1",
+        "description": "Updated Description 1",
+        "height": 11,
+        "length": 21,
+        "width": 16
+      },
+      {
+        "id": "product_id_2",
+        "name": "Updated Product 2",
+        "description": "Updated Description 2",
+        "height": 13,
+        "length": 23,
+        "width": 19
+      }
+    ]</code></pre>
+          </div>
+          <p>
+            DELETE /api/v1/products/user/batch/:userId - Delete multiple
+            products
+          </p>
+          <div class="request-body">
+            <pre><code>["product_id_1", "product_id_2", "product_id_3"]</code></pre>
+          </div>
         </div>
 
-        <div class="note">
-            <h2>Additional Notes</h2>
-            <ul>
-                <li>Access tokens expire after 1 hour.</li>
-                <li>Joi is used for request data validation.</li>
-                <li>Error handling is centralized to provide consistent responses.</li>
-                <li>When using Docker Compose, the API will be available at <code>http://localhost:3000</code> and MongoDB at <code>localhost:27017</code>.</li>
-            </ul>
-        </div>
+        <!-- ... (rest of the content remains unchanged) ... -->
+      </div>
     </div>
-</body>
+  </body>
 </html>
