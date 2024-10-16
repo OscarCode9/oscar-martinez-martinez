@@ -84,7 +84,7 @@ export const updateProduct = async (req, res, next) => {
       throw error;
     }
 
-    let product = await getProductByIdService(productId);
+    let product = await getProductByIdService({productId});
 
     if (!product) {
       throw new Error("Product not found");
@@ -92,7 +92,7 @@ export const updateProduct = async (req, res, next) => {
 
     await updateProductService(productId, productData);
 
-    product = await getProductByIdService(productId);
+    product = await getProductByIdService({productId});
 
     res.status(200).json(product);
   } catch (error) {
