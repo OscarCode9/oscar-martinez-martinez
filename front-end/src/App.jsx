@@ -283,12 +283,12 @@ export default function App() {
             Product Management Login
           </Typography>
           <p>Default user</p>
-          <p>email: "johnaaaaadaoe@example.com" password: "secauraeaaaaapassaword123" </p>
+          <p>email: "default@example.com" password: "secauraeaaaaapassaword123" </p>
           <FormContainer onSubmit={handleLogin}>
             <StyledTextField
               required
               fullWidth
-              label="Name"
+              label="Email"
               value={loginData.email}
               onChange={(e) =>
                 setLoginData({ ...loginData, email: e.target.value })

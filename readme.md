@@ -4,7 +4,10 @@ This project is a RESTful API for managing products in an e-commerce store.
 
 The RESTful API is available at the following address:
 
-http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/
+AWS: http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/
+Frontend: http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:5173/
+Email: "default@example.com" 
+Password: "secauraeaaaaapassaword123"
 
 ## Prerequisites
 
