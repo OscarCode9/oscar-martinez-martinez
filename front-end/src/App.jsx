@@ -140,7 +140,7 @@ export default function App() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/auth/login', {
+      const response = await fetch('http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginData)
@@ -166,7 +166,7 @@ export default function App() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/v1/products", {
+      const response = await fetch("http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/api/v1/products", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.ok) {
@@ -184,7 +184,7 @@ export default function App() {
 
   const handleCreateProduct = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/v1/products", {
+      const response = await fetch("http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/api/v1/products", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -221,7 +221,7 @@ export default function App() {
     if (!editingProduct) return;
     try {
       const response = await fetch(
-        `http://localhost:3000/api/v1/products/${editingProduct._id}`,
+        `http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/api/v1/products/${editingProduct._id}`,
         {
           method: "PUT",
           headers: {
@@ -253,7 +253,7 @@ export default function App() {
   const handleDeleteProduct = async (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
-        const response = await fetch(`http://localhost:3000/api/v1/products/${id}`, {
+        const response = await fetch(`http://ec2-3-16-55-56.us-east-2.compute.amazonaws.com:3000/api/v1/products/${id}`, {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token}` },
         });
